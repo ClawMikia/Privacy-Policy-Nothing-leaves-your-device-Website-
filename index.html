@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Nothing leaves your device</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F8FC;
+    --surface: #FFFFFF;
+    --text: #14213D;
+    --text-muted: #56618A;
+    --blue: #2454C7;
+    --blue-deep: #163E9E;
+    --red: #D93B3B;
+    --yellow: #C98A00;
+    --yellow-chip: #F5B301;
+    --border: #DEE4F2;
+    --shadow: 0 1px 0 rgba(20,33,61,0.04);
+    --focus: #163E9E;
+  }
+
+  html[data-theme="dark"] {
+    --bg: #0C1120;
+    --surface: #131A2E;
+    --text: #E9EDFA;
+    --text-muted: #96A1C8;
+    --blue: #6E93F0;
+    --blue-deep: #A9C0FF;
+    --red: #FF7B7B;
+    --yellow: #FFD166;
+    --yellow-chip: #FFD166;
+    --border: #262F4C;
+    --shadow: 0 1px 0 rgba(0,0,0,0.2);
+    --focus: #A9C0FF;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    transition: background 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, .brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: var(--blue-deep); }
+  a:focus-visible, button:focus-visible, .rail-dot:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .theme-toggle .track {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    background: var(--border);
+    transition: background 0.25s ease;
+  }
+
+  .theme-toggle .knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--yellow-chip);
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+
+  html[data-theme="dark"] .theme-toggle .knob {
+    transform: translateX(20px);
+    background: var(--blue);
+  }
+
+  .theme-toggle .label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding-right: 6px;
+    min-width: 38px;
+  }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-top: 64px;
+    position: sticky;
+    top: 68px;
+    height: fit-content;
+  }
+
+  .rail-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .rail-dot:hover, .rail-dot.active {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .rail-line {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    min-height: 12px;
+  }
+
+  main { padding: 0 28px 80px; min-width: 0; }
+
+  .content { max-width: 640px; margin: 0 auto; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 64px 0 40px;
+  }
+
+  .eyebrow-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .eyebrow-line .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.12;
+    margin: 0 0 20px;
+  }
+
+  .hero p.lede {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 52ch;
+    margin: 0 0 32px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: chip-in 0.5s ease forwards;
+  }
+
+  .chip:nth-child(1) { animation-delay: 0.05s; }
+  .chip:nth-child(2) { animation-delay: 0.18s; }
+  .chip:nth-child(3) { animation-delay: 0.31s; }
+
+  @keyframes chip-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .chip .swatch {
+    width: 9px; height: 9px; border-radius: 50%;
+  }
+  .chip.c-blue .swatch { background: var(--blue); }
+  .chip.c-red .swatch { background: var(--red); }
+  .chip.c-yellow .swatch { background: var(--yellow-chip); }
+
+  /* ---------- Sections ---------- */
+  .policy-section {
+    padding: 36px 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 84px;
+  }
+
+  .policy-section .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .policy-section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+
+  .policy-section p, .policy-section li {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+
+  .policy-section ul {
+    margin: 12px 0 0;
+    padding-left: 20px;
+  }
+
+  .policy-section li { margin-bottom: 8px; }
+
+  .callout {
+    margin-top: 18px;
+    border-left: 3px solid var(--red);
+    background: var(--surface);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+
+  .callout strong { color: var(--red); }
+
+  /* ---------- Footer ---------- */
+  footer.contact {
+    padding: 40px 0 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer.contact h2 { font-size: 1.3rem; margin: 0 0 10px; }
+
+  .email-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .email-card .swatch {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--yellow-chip);
+  }
+
+  .updated {
+    margin-top: 28px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+    .rail {
+      position: static;
+      flex-direction: row;
+      justify-content: center;
+      padding: 14px 0 0;
+    }
+    .rail-line { display: none; }
+    main { padding: 0 20px 60px; }
+    .hero { padding: 40px 0 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2 L27 7 V15 C27 22.5 22.3 27.8 16 30 C9.7 27.8 5 22.5 5 15 V7 Z" fill="var(--blue)" opacity="0.15"/>
+      <path d="M16 2 L27 7 V15 C27 22.5 22.3 27.8 16 30 C9.7 27.8 5 22.5 5 15 V7 Z" stroke="var(--blue)" stroke-width="1.6" fill="none"/>
+      <circle cx="16" cy="14.5" r="3.1" fill="var(--yellow-chip)"/>
+      <path d="M13 20c0-2.2 1.4-3.6 3-3.6s3 1.4 3 3.6" stroke="var(--red)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-name">Privacy Policy</span>
+  </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+    <span class="label" id="themeLabel">Light</span>
+    <span class="track"><span class="knob"></span></span>
+  </button>
+</header>
+
+<div class="layout">
+  <nav class="rail" aria-label="Jump to section">
+    <a href="#hero" class="rail-dot" data-target="hero" aria-label="Top">•</a>
+    <span class="rail-line"></span>
+    <a href="#s1" class="rail-dot" data-target="s1" aria-label="Section 1">1</a>
+    <span class="rail-line"></span>
+    <a href="#s2" class="rail-dot" data-target="s2" aria-label="Section 2">2</a>
+    <span class="rail-line"></span>
+    <a href="#s3" class="rail-dot" data-target="s3" aria-label="Section 3">3</a>
+    <span class="rail-line"></span>
+    <a href="#s4" class="rail-dot" data-target="s4" aria-label="Section 4">4</a>
+    <span class="rail-line"></span>
+    <a href="#s5" class="rail-dot" data-target="s5" aria-label="Section 5">5</a>
+  </nav>
+
+  <main>
+    <div class="content">
+      <section class="hero" id="hero">
+        <div class="eyebrow-line"><span class="dot"></span> Last updated September 7, 2026</div>
+        <h1>Nothing you enter here ever leaves your device.</h1>
+        <p class="lede">This policy covers how our mobile applications treat your information. The short version: they don't collect it, store it, or send it anywhere. Here's the full version.</p>
+        <div class="chips">
+          <span class="chip c-blue"><span class="swatch"></span>No data collected</span>
+          <span class="chip c-red"><span class="swatch"></span>No account required</span>
+          <span class="chip c-yellow"><span class="swatch"></span>No third-party trackers</span>
+        </div>
+      </section>
+
+      <section class="policy-section" id="s1">
+        <span class="num">01 — Information collection and use</span>
+        <h2>We don't collect anything</h2>
+        <p>We don't collect, store, log, track, or share any personal data, usage statistics, or device identifiers, ever.</p>
+        <ul>
+          <li><strong style="color:var(--text)">No account creation.</strong> You can use the Service without creating an account or handing over any personal information.</li>
+          <li><strong style="color:var(--text)">On-device processing.</strong> Anything you type or input stays on your device. It's never transmitted to us or to anyone else.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section" id="s2">
+        <span class="num">02 — Third-party services</span>
+        <h2>No SDKs riding along</h2>
+        <p>Our applications don't include third-party analytics tools, advertising networks, or software development kits that collect your information. What you install is what runs — nothing quietly reporting home in the background.</p>
+      </section>
+
+      <section class="policy-section" id="s3">
+        <span class="num">03 — Children's privacy</span>
+        <h2>Safe by design, for every age</h2>
+        <p>Because the Service doesn't collect personal information from anyone, that includes children under 13. There's no data pipeline that could pick up a child's information, knowingly or otherwise.</p>
+        <div class="callout"><strong>In short:</strong> if we collect nothing from everyone, we collect nothing from kids either.</div>
+      </section>
+
+      <section class="policy-section" id="s4">
+        <span class="num">04 — Changes to this policy</span>
+        <h2>If anything changes, it's posted here</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page along with a new revision date, so this page is always the current word on how the Service handles your information.</p>
+      </section>
+
+      <section class="policy-section" id="s5">
+        <span class="num">05 — Contact us</span>
+        <h2>Questions or suggestions</h2>
+        <p>Reach out any time and we'll get back to you.</p>
+      </section>
+
+      <footer class="contact">
+        <a class="email-card" href="mailto:christopherleecajes@gmail.com">
+          <span class="swatch"></span> christopherleecajes@gmail.com
+        </a>
+        <p class="updated">Privacy Policy · Last updated September 7, 2026</p>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var label = document.getElementById('themeLabel');
+
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      toggle.setAttribute('aria-pressed', theme === 'dark');
+      label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+    }
+
+    toggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+
+    setTheme('light');
+
+    var dots = document.querySelectorAll('.rail-dot');
+    var sections = Array.prototype.map.call(dots, function (d) {
+      return document.getElementById(d.dataset.target);
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var dot = document.querySelector('.rail-dot[data-target="' + entry.target.id + '"]');
+        if (!dot) return;
+        if (entry.isIntersecting) {
+          dots.forEach(function (d) { d.classList.remove('active'); });
+          dot.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+
+    sections.forEach(function (s) { if (s) observer.observe(s); });
+  })();
+</script>
+
+</body>
+</html>
